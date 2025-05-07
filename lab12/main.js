@@ -1,55 +1,76 @@
-let task = prompt("Оберіть завдання (1 - ромб із цифр, 2 - числовий ряд, 3 - вгадай число):");
+let n = parseInt(prompt("Введіть розмір шахової дошки (n):"));
+let board = "";
 
-switch (task) {
-    case "1":
-        // Завдання 1: Ромб із цифр
-        let n = parseInt(prompt("Введіть розмір ромба (n):"));
-        for (let i = 1; i <= n; i++) {
-            let row = '';
-            for (let j = 1; j <= i; j++) row += j;
-            for (let j = i - 1; j >= 1; j--) row += j;
-            alert(row);
-        }
-        for (let i = n - 1; i >= 1; i--) {
-            let row = '';
-            for (let j = 1; j <= i; j++) row += j;
-            for (let j = i - 1; j >= 1; j--) row += j;
-            alert(row);
-        }
-        break;
-
-    case "2":
-        // Завдання 2: Числовий ряд і сума
-        let num = parseInt(prompt("Введіть число n для обчислення суми ряду:"));
-        let sum = 0;
-        let series = "";
-
-        for (let i = 1; i <= num; i++) {
-            sum += 1 / i;
-            series += "1/" + i + (i < num ? " + " : "");
-        }
-
-        alert("Ряд: " + series);
-        alert("Сума ряду: " + sum.toFixed(4));
-        break;
-
-    case "3":
-        // Завдання 3: Вгадай число
-        let target = Math.floor(Math.random() * 100) + 1;
-        let guess;
-
-        do {
-            guess = parseInt(prompt("Вгадай число від 1 до 100:"));
-            if (guess < target) {
-                alert("Більше!");
-            } else if (guess > target) {
-                alert("Менше!");
-            } else {
-                alert("Вітаю! Ви вгадали число " + target + "!");
-            }
-        } while (guess !== target);
-        break;
-
-    default:
-        alert("Невірний вибір завдання.");
+for (let i = 0; i < n; i++) {
+  for (let j = 0; j < n; j++) {
+    if ((i + j) % 2 === 0) {
+      board += "1 ";
+    } else {
+      board += "0 ";
+    }
+  }
+  board += "\n";
 }
+
+alert(board);
+console.log(board);
+
+let a = parseFloat(prompt("Введіть перший елемент ряду (a):"));
+let r = parseFloat(prompt("Введіть співвідношення (r):"));
+let n = parseInt(prompt("Введіть кількість членів ряду (n):"));
+
+let series = "";
+let sum = 0;
+
+for (let i = 0; i < n; i++) {
+  let term = a * Math.pow(r, i);
+  series += term + (i < n - 1 ? ", " : "");
+  sum += term;
+}
+
+alert("Числовий ряд: " + series);
+alert("Сума ряду: " + sum);
+console.log("Числовий ряд:", series);
+console.log("Сума ряду:", sum);
+
+while (true) {
+  let operation = prompt("Введіть операцію (+, -, *, /, %) або 'exit' для виходу:");
+
+  if (operation === "exit") {
+    break; // Вихід з нескінченного циклу
+  }
+
+  let num1 = parseFloat(prompt("Введіть перше число:"));
+  let num2 = parseFloat(prompt("Введіть друге число:"));
+  let result;
+
+  switch (operation) {
+    case "+":
+      result = num1 + num2;
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "*":
+      result = num1 * num2;
+      break;
+    case "/":
+      if (num2 === 0) {
+        result = "Ділення на нуль неможливе!";
+      } else {
+        result = num1 / num2;
+      }
+      break;
+    case "%":
+      result = num1 % num2;
+      break;
+    default:
+      result = "Невірна операція!";
+  }
+
+  alert("Результат: " + result);
+  console.log("Операція:", operation, num1, num2, "=", result);
+}
+
+alert("Програма завершена.");
+console.log("Програма завершена.");
