@@ -3,13 +3,13 @@ console.log(
 );
 
 console.log("Завдання 1: Аналіз hoisting");
-// Передбачте результат виконання, потім запустіть код та поясніть в коментарі.
-console.log(a); // undefined (hoisting: змінна існує, але не ініціалізована)
-var a = 10;
-console.log(b); // ReferenceError (let не піднімається)
+var a = 10;// Передбачте результат виконання, потім запустіть код та поясніть в коментарі.
 let b = 20;
-console.log(c); // ReferenceError (const теж не піднімається)
 const c = 30;
+console.log(a); // undefined (hoisting: змінна існує, але не ініціалізована)
+console.log(b); // ReferenceError (let не піднімається)
+console.log(c); // ReferenceError (const теж не піднімається)
+
 
 console.log("Завдання 2: Робота з областю видимості (scope)");
 // Передбачте, які змінні будуть доступні після if-блоку. Додайте відповідний коментар.
