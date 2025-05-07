@@ -6,7 +6,7 @@ console.log("Завдання 1: Аналіз hoisting");
 var a = 10;// Передбачте результат виконання, потім запустіть код та поясніть в коментарі.
 let b = 20;
 const c = 30;
-console.log(a); // undefined (hoisting: змінна існує, але не ініціалізована)
+console.log(a); // undefined (hoisting: змінна 'a' оголошується на початку області видимості та ініціалізується 'undefined' до рядка присвоєння значення)
 console.log(b); // ReferenceError (let не піднімається)
 console.log(c); // ReferenceError (const теж не піднімається)
 
@@ -14,11 +14,11 @@ console.log(c); // ReferenceError (const теж не піднімається)
 console.log("Завдання 2: Робота з областю видимості (scope)");
 // Передбачте, які змінні будуть доступні після if-блоку. Додайте відповідний коментар.
 function testScope() {
-    if (true) {
+    
         var x = 5; // Доступна поза блоком (var має функціональну область видимості)
         let y = 10; // Не доступна поза блоком (блочна область видимості)
         const z = 15; // Не доступна поза блоком (блочна область видимості)
-    }
+
     console.log(x); // 5
     console.log(y); // ReferenceError
     console.log(z); // ReferenceError
